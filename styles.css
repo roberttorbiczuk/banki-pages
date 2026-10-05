@@ -157,8 +157,8 @@ a {
 .hero-art .babcia {
   position: absolute;
   left: 50%;
-  top: 4px;
-  width: 140px;
+  top: -6px;
+  width: 176px;
   transform: translateX(-50%);
 }
 

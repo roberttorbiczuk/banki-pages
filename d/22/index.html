@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnoza babci: „Z gołą szyją latał. No i proszę.” — BAŃKI!</title>
+<meta name="description" content="Zagraj w BAŃKI! — Babcia wie najlepiej. Zdejmuj bańki, łącz trójki i sprawdź swoją diagnozę.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://roberttorbiczuk.github.io/banki-pages/d/22/">
+<meta property="og:title" content="Diagnoza babci: „Z gołą szyją latał. No i proszę.”">
+<meta property="og:description" content="Zagraj w BAŃKI! — Babcia wie najlepiej.">
+<meta property="og:image" content="https://roberttorbiczuk.github.io/banki-pages/d/22/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/banki-pages/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/banki-pages/assets/icon.png">
+<link rel="stylesheet" href="/banki-pages/styles.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="/banki-pages/"><img src="/banki-pages/assets/icon.png" alt="">BAŃKI!</a>
+</header>
+<main class="card hero">
+  <p class="muted" id="level"></p>
+  <img src="card.png" alt="Diagnoza babci: „Z gołą szyją latał. No i proszę.”" style="width:100%;border-radius:18px;display:block;margin:0 auto 18px">
+  <p><button class="btn" id="share" type="button">Udostępnij</button></p>
+  <p><a href="/banki-pages/">Zagraj w BAŃKI! — Babcia wie najlepiej</a></p>
+</main>
+<footer>BAŃKI! to gra humorystyczna — nie stanowi porady medycznej.</footer>
+</div>
+<script>
+const level = new URLSearchParams(location.search).get('l');
+if (level && /^\d+$/.test(level)) document.getElementById('level').textContent = 'Poziom ' + level + ' ukończony';
+document.getElementById('share').addEventListener('click', async () => {
+  const data = { title: 'BAŃKI!', text: 'Diagnoza babci: „Z gołą szyją latał. No i proszę.” 😄 Zagraj w BAŃKI!', url: 'https://roberttorbiczuk.github.io/banki-pages/d/22/' };
+  try {
+    const blob = await (await fetch('card.png')).blob();
+    const file = new File([blob], 'diagnoza-babci.png', { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) data.files = [file];
+  } catch (e) {}
+  if (navigator.share) {
+    try { await navigator.share(data); } catch (e) {}
+  } else if (navigator.clipboard) {
+    await navigator.clipboard.writeText(data.url);
+    document.getElementById('share').textContent = 'Skopiowano link';
+  }
+});
+</script>
+</body>
+</html>
