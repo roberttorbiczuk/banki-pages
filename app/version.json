@@ -1,0 +1,10 @@
+{
+  "store": {
+    "min_version": "1.2.0",
+    "min_build": ""
+  },
+  "testflight": {
+    "min_version": "",
+    "min_build": ""
+  }
+}

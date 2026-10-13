@@ -257,6 +257,16 @@ a {
   margin: 18px 0 6px;
 }
 
+.cta .btn {
+  margin: 0 6px 12px;
+}
+
+.btn-alt {
+  background: #fff;
+  color: var(--accent-dark);
+  box-shadow: 0 6px 0 rgba(90, 50, 20, 0.25);
+}
+
 .how {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
